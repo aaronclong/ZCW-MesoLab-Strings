@@ -6,7 +6,6 @@ package io.github.aaronclong.stringlab;
 public class DriverLicense {
   private String lastName;
   private String firstName;
-  private String age;
   private String licenseNumber;
   private String address;
   private String state;
@@ -26,11 +25,6 @@ public class DriverLicense {
 
   public DriverLicense firstName(String firstName) {
     this.firstName = firstName;
-    return this;
-  }
-
-  public DriverLicense age(String age) {
-    this.age = age;
     return this;
   }
 
@@ -97,10 +91,6 @@ public class DriverLicense {
     return firstName;
   }
 
-  public String getAge() {
-    return age;
-  }
-
   public String getLicenseNumber() {
     return licenseNumber;
   }
@@ -143,5 +133,14 @@ public class DriverLicense {
 
   public String getLicenseClass() {
     return licenseClass;
+  }
+
+  @Override
+  public String toString() {
+    return String.format(
+            "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n",
+            lastName, firstName, address, state, licenseNumber,
+            dateOfBirth, issuedDate, expirationDate, sex,
+            eyes, height, organDonor, licenseClass);
   }
 }
