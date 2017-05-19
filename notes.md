@@ -1,0 +1,34 @@
+## Regular Expressions
+
+**Thinking in Java, Ed. 4**
+
+- Originially from Unix utilities like sed and awk
+- Also a part of languages like Python and Perl
+- Something about escaping characters and its irrelevance in Java
+- Java libraries `java.util.regex.Pattern` and `
+- Charcters:
+  - *B* -> is just a character
+  - *\xhh* -> Character with hex value
+  - *\uhhhh* -> The Unicode character with hex representation 0xhhhh
+  - *\t* -> Tab
+  - *\n* -> NewLine
+  - *\r* -> Carriage return
+  - *\f* -> form feed
+  - *\e* -> Escape
+  - *.* -> Any chacter
+  - *[abc]* -> Any of the characters a, b, or c (same as a|b|c)
+  - *[^abc]* -> Any character except a, b, and c (negation)
+  - *[a-zA-Z]* -> Any character a through z or A through Z (range)
+  - *[abc[hij]]* -> ny of a,b,c,h,I,j (same as a|b|c|h|i|j) (union)
+  - *\s* -> A whitespace character (space, tab, newline, form feed, carriage return)
+  - *\S* -> A non-whitespace character ([^\s])
+  - *\d* -> A numeric digit [0-9]
+  - *\D* -> A non-digit [^o-9]
+  - *\w* -> A word character [a-zA-Z_0-9]
+  - *\W* ->  A non-word character [^\w]
+- Boundary Matchers
+  - *^* -> Beginning of a line
+  - *$* -> End of a line
+  - *\b* -> Word boundary
+  - *\B* -> Non-word boundary
+  - *\G* -> End of the previous match
