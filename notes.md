@@ -32,3 +32,7 @@
   - *\b* -> Word boundary
   - *\B* -> Non-word boundary
   - *\G* -> End of the previous match
+  
+  ### HackerRank Stuff
+  - [Winning Answer](https://www.hackerrank.com/challenges/valid-username-checker) `"^(?!\\W)([a-zA-z][\\w]{7,29})$"`
+    - Don't forget index ranges with regex still begin at zero

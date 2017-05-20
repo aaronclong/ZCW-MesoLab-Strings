@@ -3,12 +3,8 @@ package io.github.aaronclong.stringlab;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.print.URIException;
-import java.io.File;
 import java.nio.file.Path;
-import java.io.IOException;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
