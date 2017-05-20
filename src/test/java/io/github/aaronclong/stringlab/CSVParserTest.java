@@ -52,7 +52,7 @@ public class CSVParserTest {
   public void testDeserializeFromCSV() {
     StringBuilder csvString = new StringBuilder(1000);
    linesAsStrings.stream().forEach(csvString::append);
-    DriverLicense[] licenses = CSVParser.deserializeFromCSV(csvString.toString());
+    DriverLicense[] licenses = CSVParser.deserializeFromCSV(String.join("\n", linesAsStrings));
     for (int i = 0; i < licenses.length; i++) {
       assertEquals("Confirming license is equivalent to the CSV",
               linesAsStrings.get(i+1), licenses[i]);

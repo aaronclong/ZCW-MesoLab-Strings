@@ -1,22 +1,33 @@
 package io.github.aaronclong.stringlab;
 
+import java.util.ArrayList;
+
 /**
  * Created by aaronlong on 5/19/17.
  */
 public class DriverLicense {
-  private String lastName;
-  private String firstName;
-  private String licenseNumber;
+  private final ArrayList<String> csvHeader;
   private String address;
-  private String state;
   private String dateOfBirth;
-  private String issuedDate;
   private String expirationDate;
-  private String sex;
   private String eyes;
+  private String firstName;
   private String height;
-  private String organDonor;
   private String licenseClass;
+  private String issuedDate;
+  private String lastName;
+  private String licenseNumber;
+  private String organDonor;
+  private String sex;
+  private String state;
+
+  private DriverLicense(ArrayList<String> csvList) {
+    csvHeader = csvList;
+  }
+
+  public static DriverLicense printLicense(ArrayList<String> csvList) {
+    return new DriverLicense(csvList);
+  }
 
   public DriverLicense lastName(String lastName) {
     this.lastName = lastName;
@@ -133,6 +144,10 @@ public class DriverLicense {
 
   public String getLicenseClass() {
     return licenseClass;
+  }
+
+  public ArrayList<String> getCSVHeader() {
+    return (ArrayList<String>) csvHeader.clone();
   }
 
   @Override
