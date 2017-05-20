@@ -7,6 +7,7 @@ import javax.print.URIException;
 import java.io.File;
 import java.nio.file.Path;
 import java.io.IOException;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -19,19 +20,18 @@ import static org.junit.Assert.assertEquals;
  * Created by aaronlong on 5/19/17.
  */
 public class CSVParserTest {
-
-  private Path file;
+  private static Logger logger = Logger.getLogger(CSVParserTest.class.toString());
   private ArrayList<String> linesAsStrings;
 
   @Before
   public void setUp() {
     try {
       ClassLoader classLoader = getClass().getClassLoader();
-      file = Paths.get(classLoader.getResource("testCSVFile.csv").toURI());
+      Path file = Paths.get(classLoader.getResource("testCSVFile.csv").toURI());
       linesAsStrings = new ArrayList<>();
       Files.lines(file).forEach(linesAsStrings::add);
     } catch(Exception e) {
-      System.out.println(e);
+      logger.warning(e.toString());
     }
 
   }
@@ -49,7 +49,13 @@ public class CSVParserTest {
   }
 
   @Test
-  public void deserializeFromCSV() {
-
+  public void testDeserializeFromCSV() {
+    StringBuilder csvString = new StringBuilder(1000);
+   linesAsStrings.stream().forEach(csvString::append);
+    DriverLicense[] licenses = CSVParser.deserializeFromCSV(csvString.toString());
+    for (int i = 0; i < licenses.length; i++) {
+      assertEquals("Confirming license is equivalent to the CSV",
+              linesAsStrings.get(i+1), licenses[i]);
+    }
   }
 }

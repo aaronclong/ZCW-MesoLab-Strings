@@ -19,7 +19,8 @@ public class CSVParser {
     return matchedColumns;
   }
 
-  public static DriverLicense[] deserializeFromCSV() {
+  public static DriverLicense[] deserializeFromCSV(String csv) {
+
     return new DriverLicense[]{};
   }
 
