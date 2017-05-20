@@ -16,7 +16,6 @@ public class CSVParser {
     while(matcher.find()) {
       matchedColumns.add(matcher.group());
     }
-    System.out.println(matchedColumns.size());
     return matchedColumns;
   }
 
