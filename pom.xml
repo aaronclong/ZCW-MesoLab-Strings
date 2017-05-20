@@ -60,7 +60,6 @@
                           <configLocation>checkstyle.xml</configLocation>
                           <encoding>UTF-8</encoding>
                           <consoleOutput>true</consoleOutput>
-                          <violationSeverity>warning</violationSeverity>
                           <failsOnError>true</failsOnError>
                       </configuration>
                       <goals>

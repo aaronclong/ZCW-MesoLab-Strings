@@ -13,10 +13,14 @@ public class CSVParser {
     Pattern pattern = Pattern.compile("([A-Z_\\.]+(?![a-z])[^,1-9])");
     Matcher matcher = pattern.matcher(csv);
     ArrayList<String> matchedColumns = new ArrayList<>();
-    while(matcher.find()) {
+    while (matcher.find()) {
       matchedColumns.add(matcher.group());
     }
     return matchedColumns;
+  }
+
+  public static DriverLicense[] deserializeFromCSV() {
+    return new DriverLicense[]{};
   }
 
 }

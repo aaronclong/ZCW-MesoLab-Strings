@@ -5,7 +5,7 @@
 - Originially from Unix utilities like sed and awk
 - Also a part of languages like Python and Perl
 - Something about escaping characters and its irrelevance in Java
-- Java libraries `java.util.regex.Pattern` and `
+- Java libraries `java.util.regex.Pattern` and `java.util.regex.Matcher`
 - Charcters:
   - *B* -> is just a character
   - *\xhh* -> Character with hex value
