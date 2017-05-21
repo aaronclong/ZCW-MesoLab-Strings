@@ -20,7 +20,7 @@ public class CSVParser {
   }
 
   public static DriverLicense[] deserializeFromCSV(String csv) {
-    String[] splitByLine = csv.split("\n");
+    String[] splitByLine = csv.split("\r\n");
     ArrayList<String> csvList = getCSVHeader(splitByLine[0]);
     //ArrayList<DriverLicense> licenses = new ArrayList<>();
     DriverLicense[] licenses = new DriverLicense[splitByLine.length-1];

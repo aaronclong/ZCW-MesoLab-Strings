@@ -49,13 +49,6 @@ public class JSONParserTest {
     assertEquals("Checking for identical DriverLicense Object creation",
             csvDriversTestAgainst.length, driversFromJSON.length);
     for (int i = 0; i < driversFromJSON.length; i++) {
-      char[] csv = csvDriversTestAgainst[i].toString().toCharArray();
-      char[] json = driversFromJSON[i].toString().toCharArray();
-      for (int z = 0; z < json.length; z++) {
-        if (json[z] != csv[z]){
-          logger.info(String.format("JSON: %d\nCSV: %d\n", (int)json[z], (int)csv[z]));
-        }
-      }
       assertEquals("Checking for identical DriverLicense Object creation",
               csvDriversTestAgainst[i].toString(), driversFromJSON[i].toString());
     }
