@@ -85,19 +85,12 @@ public class JSONParser {
     String regexPattern = "(\\{\\s+(\"[\\w\\.]+\":\\s\"[\\w '\\/-]+\",?\\s+)+\\})";
     Pattern pattern = Pattern.compile(regexPattern);
     Matcher matcher = pattern.matcher(json);
-    int groups = matcher.groupCount();
-    System.out.println(groups);
-    ArrayList<DriverLicense> stuff = new ArrayList<>();
+    ArrayList<DriverLicense> licenses = new ArrayList<>();
     while (matcher.find()) {
       String curGroup = (matcher.group());
-      System.out.println(curGroup);
-      stuff.add(stringToDriverLicense(curGroup));
+      licenses.add(stringToDriverLicense(curGroup));
     }
-    DriverLicense[] licenses = new DriverLicense[stuff.size()];
-    for (int i = 0; i < stuff.size(); i++) {
-      licenses[i] = stuff.get(i);
-    }
-    return licenses;
+    return licenses.toArray(new DriverLicense[licenses.size()]);
   }
 
 }
