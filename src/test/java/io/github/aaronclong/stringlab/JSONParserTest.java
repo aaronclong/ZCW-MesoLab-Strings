@@ -3,6 +3,7 @@ package io.github.aaronclong.stringlab;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -48,8 +49,15 @@ public class JSONParserTest {
     assertEquals("Checking for identical DriverLicense Object creation",
             csvDriversTestAgainst.length, driversFromJSON.length);
     for (int i = 0; i < driversFromJSON.length; i++) {
+      char[] csv = csvDriversTestAgainst[i].toString().toCharArray();
+      char[] json = driversFromJSON[i].toString().toCharArray();
+      for (int z = 0; z < json.length; z++) {
+        if (json[z] != csv[z]){
+          logger.info(String.format("JSON: %d\nCSV: %d\n", (int)json[z], (int)csv[z]));
+        }
+      }
       assertEquals("Checking for identical DriverLicense Object creation",
-              csvDriversTestAgainst[i], driversFromJSON[i]);
+              csvDriversTestAgainst[i].toString(), driversFromJSON[i].toString());
     }
   }
 }

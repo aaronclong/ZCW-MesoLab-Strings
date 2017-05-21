@@ -28,40 +28,40 @@ public class JSONParser {
         driver.lastName(keyValue[1]);
         break;
       case "FIRST_NAME":
-        driver.lastName(keyValue[1]);
+        driver.firstName(keyValue[1]);
         break;
       case "ADDR":
-        driver.lastName(keyValue[1]);
+        driver.address(keyValue[1]);
         break;
       case "STATE":
-        driver.lastName(keyValue[1]);
+        driver.state(keyValue[1]);
         break;
       case "LICENSE_NUMBER":
-        driver.lastName(keyValue[1]);
+        driver.licenseNumber(keyValue[1]);
         break;
       case "D.O.B.":
-        driver.lastName(keyValue[1]);
+        driver.dateOfBirth(keyValue[1]);
         break;
       case "ISS_D":
-        driver.lastName(keyValue[1]);
+        driver.issuedDate(keyValue[1]);
         break;
       case "EXP_D":
-        driver.lastName(keyValue[1]);
+        driver.expirationDate(keyValue[1]);
         break;
       case "SEX":
-        driver.lastName(keyValue[1]);
+        driver.sex(keyValue[1]);
         break;
       case "EYES":
-        driver.lastName(keyValue[1]);
+        driver.eyes(keyValue[1]);
         break;
       case "HGT":
-        driver.lastName(keyValue[1]);
+        driver.height(keyValue[1]);
         break;
       case "ORGANDONOR":
-        driver.lastName(keyValue[1]);
+        driver.organDonor(keyValue[1]);
         break;
       case "CLASS":
-        driver.lastName(keyValue[1]);
+        driver.licenseClass(keyValue[1]);
         break;
     }
 
