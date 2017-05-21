@@ -23,6 +23,47 @@ public class JSONParser {
   }
 
   private static void valueSetter(DriverLicense driver, String[] keyValue) {
+    switch (keyValue[0].toUpperCase()) {
+      case "LAST_NAME":
+        driver.lastName(keyValue[1]);
+        break;
+      case "FIRST_NAME":
+        driver.lastName(keyValue[1]);
+        break;
+      case "ADDR":
+        driver.lastName(keyValue[1]);
+        break;
+      case "STATE":
+        driver.lastName(keyValue[1]);
+        break;
+      case "LICENSE_NUMBER":
+        driver.lastName(keyValue[1]);
+        break;
+      case "D.O.B.":
+        driver.lastName(keyValue[1]);
+        break;
+      case "ISS_D":
+        driver.lastName(keyValue[1]);
+        break;
+      case "EXP_D":
+        driver.lastName(keyValue[1]);
+        break;
+      case "SEX":
+        driver.lastName(keyValue[1]);
+        break;
+      case "EYES":
+        driver.lastName(keyValue[1]);
+        break;
+      case "HGT":
+        driver.lastName(keyValue[1]);
+        break;
+      case "ORGANDONOR":
+        driver.lastName(keyValue[1]);
+        break;
+      case "CLASS":
+        driver.lastName(keyValue[1]);
+        break;
+    }
 
   }
 
@@ -41,7 +82,18 @@ public class JSONParser {
   }
 
   public static DriverLicense[] deserializeFromJSON(String json) {
-    return new DriverLicense[]{};
+    Pattern pattern = Pattern.compile("(\\{\\s+(\"[\\w\\.]+\":\\s\"[\\w\\/'\\s]+\",?\\s+)+\\})");
+    Matcher matcher = pattern.matcher(json);
+    int groups = matcher.groupCount();
+    System.out.println(groups);
+    DriverLicense[] licenses = new DriverLicense[groups];
+    for (int i = 0; i < groups; i++) {
+      matcher.find();
+      String curGroup = (matcher.group());
+      System.out.println(curGroup);
+      licenses[i] = stringToDriverLicense(curGroup);
+    }
+    return licenses;
   }
 
 }
