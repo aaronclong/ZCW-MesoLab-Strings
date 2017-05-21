@@ -33,6 +33,10 @@
   - *\B* -> Non-word boundary
   - *\G* -> End of the previous match
   
+  ## Project Notes
+  - JSON Line Parse: `("[A-Z_\.]+":\s(""|"[A-Za-z0-9-\/\s']+"))`
+  - JSON Block Selector: `(\{\s+("[\w\.]+":\s"[\w\/'\s]+",?\s+)+\})`
+  
   ### HackerRank Stuff
   - [Winning Answer](https://www.hackerrank.com/challenges/valid-username-checker) `"^(?!\\W)([a-zA-z][\\w]{7,29})$"`
     - Don't forget index ranges with regex still begin at zero
