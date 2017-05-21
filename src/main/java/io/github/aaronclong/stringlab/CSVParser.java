@@ -1,5 +1,6 @@
 package io.github.aaronclong.stringlab;
 
+import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,6 +29,14 @@ public class CSVParser {
       licenses[i - 1] = stringToDriverLicense(csvList, splitByLine[i]);
     }
     return licenses;
+  }
+
+  public static String serializeToCSV(DriverLicense[] licenses) {
+    StringBuilder csv = new StringBuilder(1000);
+    for (DriverLicense license : licenses) {
+      csv.append(license.toString());
+    }
+    return csv.toString();
   }
 
   private static DriverLicense stringToDriverLicense(ArrayList<String> csvList, String line) {

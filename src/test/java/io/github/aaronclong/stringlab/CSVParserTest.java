@@ -54,4 +54,11 @@ public class CSVParserTest {
               linesAsStrings.get(i+1) + '\n', licenses[i].toString());
     }
   }
+
+  @Test
+  public void testSerializeToCSV() {
+    String csvFileAsString = String.join("\n", linesAsStrings);
+    DriverLicense[] licenses = CSVParser.deserializeFromCSV(csvFileAsString);
+    String licenseObjectsToString = CSVParser.serializeToCSV(licenses);
+  }
 }

@@ -153,7 +153,7 @@ public class DriverLicense {
   @Override
   public String toString() {
     return String.format(
-            "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n",
+            "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\r\n",
             lastName, firstName, address, state, licenseNumber,
             dateOfBirth, issuedDate, expirationDate, sex,
             eyes, height, organDonor, licenseClass);
