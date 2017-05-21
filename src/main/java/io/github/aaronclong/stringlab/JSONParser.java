@@ -82,16 +82,20 @@ public class JSONParser {
   }
 
   public static DriverLicense[] deserializeFromJSON(String json) {
-    Pattern pattern = Pattern.compile("(\\{\\s+(\"[\\w\\.]+\":\\s\"[\\w\\/'\\s]+\",?\\s+)+\\})");
+    String regexPattern = "(\\{\\s+(\"[\\w\\.]+\":\\s\"[\\w '\\/-]+\",?\\s+)+\\})";
+    Pattern pattern = Pattern.compile(regexPattern);
     Matcher matcher = pattern.matcher(json);
     int groups = matcher.groupCount();
     System.out.println(groups);
-    DriverLicense[] licenses = new DriverLicense[groups];
-    for (int i = 0; i < groups; i++) {
-      matcher.find();
+    ArrayList<DriverLicense> stuff = new ArrayList<>();
+    while (matcher.find()) {
       String curGroup = (matcher.group());
       System.out.println(curGroup);
-      licenses[i] = stringToDriverLicense(curGroup);
+      stuff.add(stringToDriverLicense(curGroup));
+    }
+    DriverLicense[] licenses = new DriverLicense[stuff.size()];
+    for (int i = 0; i < stuff.size(); i++) {
+      licenses[i] = stuff.get(i);
     }
     return licenses;
   }

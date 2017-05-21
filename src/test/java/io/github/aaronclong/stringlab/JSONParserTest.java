@@ -45,6 +45,7 @@ public class JSONParserTest {
 
   @Test
   public void testDeserializeJSON() {
+    logger.info(jsonString);
     DriverLicense[] driversFromJSON = JSONParser.deserializeFromJSON(jsonString);
     assertEquals("Checking for identical DriverLicense Object creation",
             csvDriversTestAgainst.length, driversFromJSON.length);

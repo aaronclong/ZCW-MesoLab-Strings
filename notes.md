@@ -23,7 +23,7 @@
   - *\s* -> A whitespace character (space, tab, newline, form feed, carriage return)
   - *\S* -> A non-whitespace character ([^\s])
   - *\d* -> A numeric digit [0-9]
-  - *\D* -> A non-digit [^o-9]
+  - *\D* -> A non-digit [^0-9]
   - *\w* -> A word character [a-zA-Z_0-9]
   - *\W* ->  A non-word character [^\w]
 - Boundary Matchers
@@ -36,6 +36,7 @@
   ## Project Notes
   - JSON Line Parse: `("[A-Z_\.]+":\s(""|"[A-Za-z0-9-\/\s']+"))`
   - JSON Block Selector: `(\{\s+("[\w\.]+":\s"[\w\/'\s]+",?\s+)+\})`
+  - Key Value: `(\w+\s?(\.?)(\/?)('?))+`
   
   ### HackerRank Stuff
   - [Winning Answer](https://www.hackerrank.com/challenges/valid-username-checker) `"^(?!\\W)([a-zA-z][\\w]{7,29})$"`
