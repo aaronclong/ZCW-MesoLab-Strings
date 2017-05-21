@@ -47,7 +47,6 @@ public class CSVParser {
     for (DriverLicense license : licenses) {
       csv.append(license.toString());
     }
-    //csv.append("\r\n");
     return csv.toString();
   }
 
