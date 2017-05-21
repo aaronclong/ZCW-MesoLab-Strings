@@ -49,7 +49,7 @@ public class JSONParserTest {
             csvDriversTestAgainst.length, driversFromJSON.length);
     for (int i = 0; i < driversFromJSON.length; i++) {
       assertEquals("Checking for identical DriverLicense Object creation",
-              csvDriversTestAgainst[i], driversFromJSON[i];
+              csvDriversTestAgainst[i], driversFromJSON[i]);
     }
   }
 }

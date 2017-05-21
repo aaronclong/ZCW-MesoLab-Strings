@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by aaronlong on 5/19/17.
  */
 public class DriverLicense {
-  private final ArrayList<String> csvHeader;
+  private final ArrayList<String> driverFields;
   private String address;
   private String dateOfBirth;
   private String expirationDate;
@@ -21,8 +21,8 @@ public class DriverLicense {
   private String sex;
   private String state;
 
-  private DriverLicense(ArrayList<String> csvList) {
-    csvHeader = csvList;
+  private DriverLicense(ArrayList<String> fieldsList) {
+    driverFields = fieldsList;
   }
 
   public static DriverLicense printLicense(ArrayList<String> csvList) {
@@ -147,7 +147,7 @@ public class DriverLicense {
   }
 
   public ArrayList<String> getCSVHeader() {
-    return (ArrayList<String>) csvHeader.clone();
+    return (ArrayList<String>) driverFields.clone();
   }
 
   @Override
