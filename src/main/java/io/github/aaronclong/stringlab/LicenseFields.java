@@ -11,7 +11,7 @@ public enum LicenseFields {
   ADDR("ADDR"),
   STATE("STATE"),
   LICENSE_NUMBER("LICENSE_NUMBER"),
-  DOB("D.O.B"),
+  DOB("D.O.B."),
   ISS_D("ISS_D"),
   EXP_D("EXP_D"),
   SEX("SEX"),

@@ -178,5 +178,20 @@
     "HGT": "6'1",
     "ORGANDONOR": "NO",
     "CLASS": "D"
+  },
+  {
+    "LAST_NAME": "Zach",
+    "FIRST_NAME": "Leon",
+    "ADDR": "1234 BadAtSmash Ln",
+    "STATE": "DE",
+    "LICENSE_NUMBER": "L101234107890",
+    "D.O.B.": "1/2/3456",
+    "ISS_D": "3/3/2000",
+    "EXP_D": "5/19/2107",
+    "SEX": "M",
+    "EYES": "BRO",
+    "HGT": "4'3",
+    "ORGANDONOR": "NO",
+    "CLASS": "D"
   }
 ]

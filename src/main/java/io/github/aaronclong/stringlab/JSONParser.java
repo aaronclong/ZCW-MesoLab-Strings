@@ -67,6 +67,40 @@ public class JSONParser {
 
   }
 
+  private static String valueGetter(DriverLicense driver, String key) {
+    switch (key.toUpperCase()) {
+      case "LAST_NAME":
+        return driver.getLastName();
+      case "FIRST_NAME":
+        return driver.getFirstName();
+      case "ADDR":
+        return driver.getAddress();
+      case "STATE":
+        return driver.getState();
+      case "LICENSE_NUMBER":
+        return driver.getLicenseNumber();
+      case "D.O.B.":
+        return driver.getDateOfBirth();
+      case "ISS_D":
+        return driver.getIssuedDate();
+      case "EXP_D":
+        return driver.getExpirationDate();
+      case "SEX":
+        return driver.getSex();
+      case "EYES":
+        return driver.getEyes();
+      case "HGT":
+        return driver.getHeight();
+      case "ORGANDONOR":
+        return driver.getOrganDonor();
+      case "CLASS":
+        return driver.getLicenseClass();
+      default:
+        return null;
+    }
+
+  }
+
   private static DriverLicense stringToDriverLicense(String block) {
     Pattern pattern = Pattern.compile("(\"[\\w\\.]+\":\\s\"[\\w\\/'\\s]+\",?)");
     DriverLicense driver = DriverLicense.printLicense(new ArrayList<>());
@@ -91,6 +125,31 @@ public class JSONParser {
       licenses.add(stringToDriverLicense(curGroup));
     }
     return licenses.toArray(new DriverLicense[licenses.size()]);
+  }
+
+  public static String serializeToJSON(DriverLicense[] licenses) {
+    StringBuilder sb = new StringBuilder(1000);
+    for (DriverLicense license : licenses) {
+      sb.append(buildBlock(license));
+      sb.append(",\n");
+    }
+    return sb.toString();
+  }
+
+  private static String buildBlock(DriverLicense license) {
+    StringBuilder sb = new StringBuilder(1000);
+    sb.append("  {\n");
+    for (LicenseFields field : LicenseFields.values()) {
+      String key = field.getValue();
+      String value = valueGetter(license, key);
+      sb.append(lineBuilder(key, value));
+    }
+    sb.append("  }");
+    return sb.toString();
+  }
+
+  private static String lineBuilder(String key, String value) {
+    return String.format("    \"%s\": \"%s\",\n", key, value);
   }
 
 }

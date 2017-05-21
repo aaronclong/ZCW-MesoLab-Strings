@@ -56,6 +56,7 @@ public class JSONParserTest {
 
   @Test
   public void testSerializeToJSON() {
-
+    String licenseObjectsToString = JSONParser.serializeToJSON(csvDriversTestAgainst);
+    assertEquals("Checking csv file consistency", jsonString, licenseObjectsToString);
   }
 }
