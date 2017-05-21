@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 
 /**
  * Created by aaronlong on 5/19/17.
@@ -18,6 +20,7 @@ import static org.junit.Assert.assertEquals;
 public class CSVParserTest {
   private static Logger logger = Logger.getLogger(CSVParserTest.class.toString());
   private ArrayList<String> linesAsStrings;
+  private String csvFile;
 
   @Before
   public void setUp() {
@@ -26,6 +29,8 @@ public class CSVParserTest {
       Path file = Paths.get(classLoader.getResource("testCSVFile.csv").toURI());
       linesAsStrings = new ArrayList<>();
       Files.lines(file).forEach(linesAsStrings::add);
+      byte[] csvBytes = Files.readAllBytes(file);
+      csvFile = new String(csvBytes);
     } catch(Exception e) {
       logger.warning(e.toString());
     }
@@ -46,9 +51,8 @@ public class CSVParserTest {
 
   @Test
   public void testDeserializeFromCSV() {
-    StringBuilder csvString = new StringBuilder(1000);
-   linesAsStrings.stream().forEach(csvString::append);
-    DriverLicense[] licenses = CSVParser.deserializeFromCSV(String.join("\n", linesAsStrings));
+    DriverLicense[] licenses = CSVParser.deserializeFromCSV(csvFile);
+    assertTrue("Checking csv file consistency", licenses.length > 0);
     for (int i = 0; i < licenses.length; i++) {
       assertEquals("Confirming license is equivalent to the CSV",
               linesAsStrings.get(i+1) + '\n', licenses[i].toString());
@@ -57,8 +61,9 @@ public class CSVParserTest {
 
   @Test
   public void testSerializeToCSV() {
-    String csvFileAsString = String.join("\n", linesAsStrings);
-    DriverLicense[] licenses = CSVParser.deserializeFromCSV(csvFileAsString);
+    DriverLicense[] licenses = CSVParser.deserializeFromCSV(csvFile);
     String licenseObjectsToString = CSVParser.serializeToCSV(licenses);
+    assertTrue("Checking csv file consistency", licenses.length > 0);
+    assertEquals("Checking csv file consistency", csvFile, licenseObjectsToString);
   }
 }

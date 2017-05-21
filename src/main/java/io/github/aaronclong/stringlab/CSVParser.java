@@ -31,11 +31,23 @@ public class CSVParser {
     return licenses;
   }
 
+  private static void writeCSVHeader(StringBuilder builder, ArrayList<String> list) {
+    for (int i = 0; i < list.size(); i++) {
+      builder.append(list.get(i));
+      if (i != list.size()-1) {
+        builder.append(',');
+      }
+    }
+    builder.append('\n');
+  }
+
   public static String serializeToCSV(DriverLicense[] licenses) {
     StringBuilder csv = new StringBuilder(1000);
+    writeCSVHeader(csv, licenses[0].getCSVHeader());
     for (DriverLicense license : licenses) {
       csv.append(license.toString());
     }
+    //csv.append("\r\n");
     return csv.toString();
   }
 
