@@ -41,3 +41,4 @@
   ### HackerRank Stuff
   - [Winning Answer](https://www.hackerrank.com/challenges/valid-username-checker) `"^(?!\\W)([a-zA-z][\\w]{7,29})$"`
     - Don't forget index ranges with regex still begin at zero
+  - [Partially working](https://www.hackerrank.com/challenges/java-regex) `^(((\\d\\d)|(0\\d{0,2})|(1\\d*\\d*)|(2[0-4]\\d*)|(2[0-5][0-5]))\\.?){3,4}$`

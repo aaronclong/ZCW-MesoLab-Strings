@@ -129,27 +129,34 @@ public class JSONParser {
 
   public static String serializeToJSON(DriverLicense[] licenses) {
     StringBuilder sb = new StringBuilder(1000);
-    for (DriverLicense license : licenses) {
-      sb.append(buildBlock(license));
-      sb.append(",\n");
+    sb.append("[\n");
+    for (int i = 0; i < licenses.length; i++) {
+      sb.append(buildBlock(licenses[i]));
+      if (i != licenses.length - 1) {
+        sb.append(",\n");
+      }
     }
+    sb.append("\n]");
     return sb.toString();
   }
 
   private static String buildBlock(DriverLicense license) {
     StringBuilder sb = new StringBuilder(1000);
     sb.append("  {\n");
-    for (LicenseFields field : LicenseFields.values()) {
-      String key = field.getValue();
+    LicenseFields[] fields = LicenseFields.values();
+    for (int i = 0; i < fields.length; i++) {
+      String key = fields[i].getValue();
       String value = valueGetter(license, key);
-      sb.append(lineBuilder(key, value));
+      boolean punctuation = i == (fields.length - 1);
+      sb.append(lineBuilder(key, value, punctuation));
     }
     sb.append("  }");
     return sb.toString();
   }
 
-  private static String lineBuilder(String key, String value) {
-    return String.format("    \"%s\": \"%s\",\n", key, value);
+  private static String lineBuilder(String key, String value, boolean lastItem) {
+    String punctuation = lastItem ? "" : ",";
+    return String.format("    \"%s\": \"%s\"%s\n", key, value, punctuation);
   }
 
 }
